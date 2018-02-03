@@ -1,0 +1,10 @@
+task("Hello") {
+  doLast {
+	println("Hello World")
+  }
+}
+
+task("SettingsCopy", type: Copy) {
+	from 'build.gradle'
+	into '/test'
+}

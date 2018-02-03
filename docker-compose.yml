@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  gradleSevice:
+    image: gradle:4.5
+    volumes:
+      - ./gradleproj:/gradleproj
+      - ./outputVolume:/test
+    working_dir: /gradleproj
+    command: gradle SettingsCopy --no-daemon
+
+  printService:
+    image: alpine:3.7
+    volumes:
+      - ./outputVolume:/test
+    command: /bin/sh -c "sleep 2; cat /test/build.gradle"
+    depends_on:
+      - gradleSevice
+
+volumes:
+  outputVolume: {}
