@@ -7,7 +7,7 @@ services:
       - ./gradleproj:/gradleproj
       - ./outputVolume:/test
     working_dir: /gradleproj
-    command: gradle SettingsCopy --no-daemon
+    command: gradle BuildCopy --no-daemon
 
   printService:
     image: alpine:3.7
